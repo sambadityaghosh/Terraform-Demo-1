@@ -37,16 +37,16 @@ resource "azurerm_app_service" "test" {
 }
 
 resource "azurerm_sql_server" "test" {
-  name                         = "terraform-sqlserver"
+  name                         = "terraform-sqlserver-sam"
   resource_group_name          = "${azurerm_resource_group.test.name}"
   location                     = "${azurerm_resource_group.test.location}"
   version                      = "12.0"
-  administrator_login          = "houssem"
+  administrator_login          = "sam"
   administrator_login_password = "4-v3ry-53cr37-p455w0rd"
 }
 
 resource "azurerm_sql_database" "test" {
-  name                = "terraform-sqldatabase"
+  name                = "terraform-sqldatabase-sam"
   resource_group_name = "${azurerm_resource_group.test.name}"
   location            = "${azurerm_resource_group.test.location}"
   server_name         = "${azurerm_sql_server.test.name}"
